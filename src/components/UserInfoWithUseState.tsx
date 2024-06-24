@@ -6,6 +6,11 @@ const UserInfoWithUseState = () => {
   const [user, setUser] = useState({ name: "", age: "", hobbies: [] });
   console.log(user);
 
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    console.log({ user: user });
+  };
+
   return (
     <form className="flex flex-col gap-3">
       <input
@@ -25,7 +30,9 @@ const UserInfoWithUseState = () => {
         placeholder="user age"
       />
       <input
-        onBlur={(e) => setUser({...user,  hobbies: [...user.hobbies, e.target.value] })}
+        onBlur={(e) =>
+          setUser({ ...user, hobbies: [...user.hobbies, e.target.value] })
+        }
         className="border border-black rounded-md py-1 px-2"
         type="text"
         name="hobbies"
