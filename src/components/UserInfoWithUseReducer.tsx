@@ -1,12 +1,17 @@
-import { useReducer } from "react";
+import React, { ChangeEvent, useReducer } from "react";
+
+const TAction = {
+  type: String,
+  payload: String,
+};
 
 const initialState = {
   name: "",
   age: "",
-  hobbise: [],
+  hobbise: [] as string[],
 };
 
-const reducer = (currentState, action) => {
+const reducer = (currentState: typeof initialState, action: typeof TAction) => {
   switch (action.type) {
     case "addName":
       return { ...currentState, name: action.payload };
@@ -30,7 +35,7 @@ const UserInfoWithUseReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log(state);
 
-  const handelSubmit = (e) => {
+  const handelSubmit = (e: ChangeEvent<HTMLElement>) => {
     e.preventDefault();
     console.log({ user: state });
   };
